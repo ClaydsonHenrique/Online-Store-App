@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import Categories from './Categories';
-import { getProductsFromCategoryAndQuery, getCategories } from '../services/api';
+import { getProductsFromCategoryAndQuery } from '../services/api';
 import SearchProduct from './InputSearch';
 import ProductsList from './ProductsList';
 
@@ -11,18 +10,22 @@ class Home extends Component {
     super(props);
 
     this.state = {
-      category: props.category,
+      category: '',
       productsDetails: [],
       search: false,
     };
   }
 
-  async componentDidMount() {
-    const categ = await getCategories();
-    console.log(categ);
-  }
+  handleCategory = (categ) => {
+    this.setState({
+      category: categ,
+    }, this.handleClick);
+  };
 
   handleClick = async (product) => {
+    if (!product) {
+      product = '';
+    }
     const { category } = this.state;
     const products = await getProductsFromCategoryAndQuery(category, product);
     if (products.results.length > 0) {
@@ -34,7 +37,7 @@ class Home extends Component {
   };
 
   render() {
-    const { productsDetails, search } = this.state;
+    const { productsDetails, search, category } = this.state;
     return (
       <>
         <div>
@@ -49,7 +52,12 @@ class Home extends Component {
         </div>
         <Link to="./Carrinho" data-testid="shopping-cart-button"> Carrinho</Link>
         <div>
-          <Categories />
+          <Categories
+            category={ category }
+            handleCategory={ this.handleCategory }
+            productsDetail={ productsDetails }
+            handleClick={ this.handleClick }
+          />
           { search && productsDetails.length < 1
           && (<p>Nenhum produto foi encontrado</p>)}
           <ProductsList productsDetails={ productsDetails } />
@@ -58,12 +66,5 @@ class Home extends Component {
     );
   }
 }
-
-Home.propTypes = {
-  category: PropTypes.string,
-};
-Home.defaultProps = {
-  category: '',
-};
 
 export default Home;
