@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Categories from './Categories';
 import { getProductsFromCategoryAndQuery, getCategories } from '../services/api';
 import SearchProduct from './InputSearch';
 import ProductsList from './ProductsList';
@@ -33,21 +35,26 @@ class Home extends Component {
 
   render() {
     const { productsDetails, search } = this.state;
-    console.log(productsDetails);
     return (
-      <div>
-        <SearchProduct
-          handleClick={ this.handleClick }
-        />
-        { !search && (
-          <p data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </p>
-        )}
-        { search && productsDetails.length < 1
+      <>
+        <div>
+          <SearchProduct
+            handleClick={ this.handleClick }
+          />
+          { !search && (
+            <p data-testid="home-initial-message">
+              Digite algum termo de pesquisa ou escolha uma categoria.
+            </p>
+          )}
+        </div>
+        <Link to="./Carrinho" data-testid="shopping-cart-button"> Carrinho</Link>
+        <div>
+          <Categories />
+          { search && productsDetails.length < 1
           && (<p>Nenhum produto foi encontrado</p>)}
-        <ProductsList productsDetails={ productsDetails } />
-      </div>
+          <ProductsList productsDetails={ productsDetails } />
+        </div>
+      </>
     );
   }
 }
