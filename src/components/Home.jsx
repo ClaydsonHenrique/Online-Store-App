@@ -8,7 +8,7 @@ class Home extends Component {
         <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
-        <Link to="./Carrinho"> Carrinho</Link>
+        <Link to="./Carrinho" data-testid="shopping-cart-button"> Carrinho</Link>
       </div>
     );
   }
