@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default class ProductsList extends Component {
   render() {
-    const { productsDetails } = this.props;
+    const { productsDetails, fAddProtuctToCar } = this.props;
     return (
       <div>
         { productsDetails && productsDetails?.map((product) => (
@@ -14,6 +14,13 @@ export default class ProductsList extends Component {
               <p>{ `R$ ${product.price}`}</p>
 
             </Link>
+            <button
+              data-testid="product-add-to-cart"
+              onClick={ () => { fAddProtuctToCar(product); } }
+            >
+              Adicionar ao carrinho
+
+            </button>
           </div>))}
       </div>
     );
@@ -21,6 +28,7 @@ export default class ProductsList extends Component {
 }
 ProductsList.propTypes = {
   productsDetails: PropTypes.arrayOf(PropTypes.shape),
+  fAddProtuctToCar: PropTypes.func.isRequired,
 };
 ProductsList.defaultProps = {
   productsDetails: [],
