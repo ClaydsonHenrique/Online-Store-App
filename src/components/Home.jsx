@@ -13,6 +13,7 @@ class Home extends Component {
       category: '',
       productsDetails: [],
       search: false,
+      carProductList: [],
     };
   }
 
@@ -36,6 +37,17 @@ class Home extends Component {
     this.setState({ search: true });
   };
 
+  fSaveOnLocalStorage = () => {
+    const { carProductList } = this.state;
+    localStorage.setItem('carProductList', JSON.stringify(carProductList));
+  };
+
+  fAddProductToCar = (product) => {
+    this.setState((prev) => ({
+      carProductList: [...prev.carProductList, product],
+    }), this.fSaveOnLocalStorage);
+  };
+
   render() {
     const { productsDetails, search, category } = this.state;
     return (
@@ -50,7 +62,7 @@ class Home extends Component {
             </p>
           )}
         </div>
-        <Link to="./Carrinho" data-testid="shopping-cart-button"> Carrinho</Link>
+        <Link to="/Carrinho" data-testid="shopping-cart-button"> Carrinho</Link>
         <div>
           <Categories
             category={ category }
@@ -60,7 +72,10 @@ class Home extends Component {
           />
           { search && productsDetails.length < 1
           && (<p>Nenhum produto foi encontrado</p>)}
-          <ProductsList productsDetails={ productsDetails } />
+          <ProductsList
+            productsDetails={ productsDetails }
+            fAddProductToCar={ this.fAddProductToCar }
+          />
         </div>
       </>
     );
