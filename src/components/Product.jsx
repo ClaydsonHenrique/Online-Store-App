@@ -19,12 +19,6 @@ class Product extends Component {
     this.fetchProductDetails();
   }
 
-  // handleSubmit = (event) => {
-  //   const { history } = this.props;
-  //   event.preventDefault();
-  //   history.push('/Carrinho');
-  // };
-
   fTest = (product) => {
     const getLocal = JSON.parse(localStorage.getItem('carProductList'));
     localStorage.setItem('carProductList', JSON.stringify([...getLocal, product]));
