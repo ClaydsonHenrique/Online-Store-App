@@ -12,13 +12,22 @@ class Product extends Component {
   }
 
   componentDidMount() {
+    const getLocal = JSON.parse(localStorage.getItem('carProductList'));
+    if (!getLocal) {
+      localStorage.setItem('carProductList', JSON.stringify([]));
+    }
     this.fetchProductDetails();
   }
 
-  handleSubmit = (event) => {
-    const { history } = this.props;
-    event.preventDefault();
-    history.push('/Carrinho');
+  // handleSubmit = (event) => {
+  //   const { history } = this.props;
+  //   event.preventDefault();
+  //   history.push('/Carrinho');
+  // };
+
+  fTest = (product) => {
+    const getLocal = JSON.parse(localStorage.getItem('carProductList'));
+    localStorage.setItem('carProductList', JSON.stringify([...getLocal, product]));
   };
 
   fetchProductDetails = async () => {
@@ -40,8 +49,8 @@ class Product extends Component {
         <img src={ product.thumbnail } alt="" data-testid="product-detail-image" />
         <p data-testid="product-detail-price">{product.price}</p>
         <button
-          data-testid="shopping-cart-button"
-          onClick={ this.handleSubmit }
+          data-testid="product-detail-add-to-cart"
+          onClick={ () => { this.fTest(product); } }
         >
           Adicionar ao Carrinho
 

@@ -42,7 +42,7 @@ class Home extends Component {
     localStorage.setItem('carProductList', JSON.stringify(carProductList));
   };
 
-  fAddProtuctToCar = (product) => {
+  fAddProductToCar = (product) => {
     this.setState((prev) => ({
       carProductList: [...prev.carProductList, product],
     }), this.fSaveOnLocalStorage);
@@ -74,7 +74,7 @@ class Home extends Component {
           && (<p>Nenhum produto foi encontrado</p>)}
           <ProductsList
             productsDetails={ productsDetails }
-            fAddProtuctToCar={ this.fAddProtuctToCar }
+            fAddProductToCar={ this.fAddProductToCar }
           />
         </div>
       </>
