@@ -21,13 +21,12 @@ export default class Categories extends Component {
   handleLoad = (id) => {
     const { handleCategory } = this.props;
     handleCategory(id);
-    // await handleClick();
   };
 
   render() {
     const { allCategories } = this.state;
     return (
-      <div>
+      <>
         {
           allCategories.map(({ name, id }) => (
             <label data-testid="category" htmlFor={ name } key={ name }>
@@ -42,7 +41,7 @@ export default class Categories extends Component {
             </label>
           ))
         }
-      </div>
+      </>
     );
   }
 }

@@ -6,9 +6,9 @@ export default class ProductsList extends Component {
   render() {
     const { productsDetails, fAddProductToCar } = this.props;
     return (
-      <div>
+      <div className="productList">
         { productsDetails && productsDetails?.map((product) => (
-          <div data-testid="product" key={ product.id }>
+          <div data-testid="product" className="product" key={ product.id }>
             <Link data-testid="product-detail-link" to={ `/product/${product.id}` }>
               <h4>{ product.title }</h4>
               <p>{ `R$ ${product.price}`}</p>
