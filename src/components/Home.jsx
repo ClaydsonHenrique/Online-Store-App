@@ -4,6 +4,7 @@ import Categories from './Categories';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 import SearchProduct from './InputSearch';
 import ProductsList from './ProductsList';
+import './Home.css';
 
 class Home extends Component {
   constructor(props) {
@@ -15,6 +16,15 @@ class Home extends Component {
       search: false,
       carProductList: [],
     };
+  }
+
+  componentDidMount() {
+    const car = JSON.parse(localStorage.getItem('carProductList'));
+    if (car) {
+      this.setState({
+        carProductList: car,
+      });
+    }
   }
 
   handleCategory = (categ) => {
@@ -52,30 +62,43 @@ class Home extends Component {
     const { productsDetails, search, category } = this.state;
     return (
       <>
-        <div>
+        <div className="header">
           <SearchProduct
             handleClick={ this.handleClick }
           />
-          { !search && (
-            <p data-testid="home-initial-message">
-              Digite algum termo de pesquisa ou escolha uma categoria.
-            </p>
-          )}
+          <Link
+            to="/Carrinho"
+            data-testid="shopping-cart-button"
+            className="carrinho"
+          >
+            {' '}
+            Carrinho
+
+          </Link>
         </div>
-        <Link to="/Carrinho" data-testid="shopping-cart-button"> Carrinho</Link>
-        <div>
-          <Categories
-            category={ category }
-            handleCategory={ this.handleCategory }
-            productsDetail={ productsDetails }
-            handleClick={ this.handleClick }
-          />
-          { search && productsDetails.length < 1
-          && (<p>Nenhum produto foi encontrado</p>)}
-          <ProductsList
-            productsDetails={ productsDetails }
-            fAddProductToCar={ this.fAddProductToCar }
-          />
+
+        <div className="productCateg">
+          <div className="category">
+            <Categories
+              category={ category }
+              handleCategory={ this.handleCategory }
+              productsDetail={ productsDetails }
+              handleClick={ this.handleClick }
+            />
+          </div>
+          <div className="products">
+            <ProductsList
+              productsDetails={ productsDetails }
+              fAddProductToCar={ this.fAddProductToCar }
+            />
+            { !search && (
+              <p data-testid="home-initial-message" className="prod-parag">
+                Digite algum termo de pesquisa ou escolha uma categoria.
+              </p>
+            )}
+            { search && productsDetails.length < 1
+                && (<p className="prod-parag">Nenhum produto foi encontrado</p>)}
+          </div>
         </div>
       </>
     );

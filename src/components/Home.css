@@ -1,0 +1,68 @@
+.header {
+  background: #003be5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  height: 10vh;
+  width: 100%;
+}
+
+.header > input {
+  background: white;
+  border: 1px solid white;
+  height: 2rem;
+  left: 3rem;
+  position: absolute;
+  top: 2rem;
+  width: 25rem;
+}
+
+.header > button {
+  background: #2fc18c;
+  bottom: 91.67%;
+  height: 35px;
+  left: 30rem;
+  position: absolute;
+  top: 2rem;
+  width: 8rem;
+}
+
+.header > a {
+  color: aliceblue;
+}
+
+.productCateg {
+  display: flex;
+}
+
+.prod-parag {
+  align-self: center;
+}
+
+.productList {
+  display: flex;
+  flex-direction: column;
+}
+
+.product {
+  border: 1px solid black;
+}
+
+.category {
+  align-items: flex-end;
+  background: white;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  margin: 1cm;
+  top: 101px;
+  width: 310px;
+}
+
+.carrinho {
+  height: 40px;
+  left: 1185px;
+  position: absolute;
+  top: 31px;
+  width: 44.08px;
+}
