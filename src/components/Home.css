@@ -1,32 +1,29 @@
 .header {
+  background: #003be5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
-  width: 100%;
   height: 10vh;
-  left: 0px;
-  top: 0px;
-  background: #003BE5;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 .header > input {
-  position: absolute;
-  width: 25rem;
+  background: white;
+  border: 1px solid white;
   height: 2rem;
   left: 3rem;
+  position: absolute;
   top: 2rem;
-  background: #FFFFFF;
-  border: 1px solid #FFFFFF;
+  width: 25rem;
 }
 
 .header > button {
-position: absolute;
-width: 8rem;
-height: 35px;
-left: 12rem;
-top: 2rem;
-left: 42vh;
-bottom: 91.67%;
-background: #2FC18C;
+  background: #2fc18c;
+  bottom: 91.67%;
+  height: 35px;
+  left: 30rem;
+  position: absolute;
+  top: 2rem;
+  width: 8rem;
 }
 
 .header > a {
@@ -51,23 +48,21 @@ background: #2FC18C;
 }
 
 .category {
-  margin: 1cm;
+  align-items: flex-end;
+  background: white;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  width: 310px;
   height: 90vh;
-  left: 0px;
+  margin: 1cm;
   top: 101px;
-  background: #FFFFFF;
-  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.05);
-  align-items: flex-end;
-  flex-direction: column;
+  width: 310px;
 }
 
 .carrinho {
-  position: absolute;
-  width: 44.08px;
   height: 40px;
   left: 1185px;
+  position: absolute;
   top: 31px;
+  width: 44.08px;
 }
