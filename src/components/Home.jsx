@@ -18,6 +18,15 @@ class Home extends Component {
     };
   }
 
+  componentDidMount() {
+    const car = JSON.parse(localStorage.getItem('carProductList'));
+    if (car) {
+      this.setState({
+        carProductList: car,
+      });
+    }
+  }
+
   handleCategory = (categ) => {
     this.setState({
       category: categ,
