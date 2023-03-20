@@ -38,6 +38,16 @@ export default class Carrinho extends Component {
   };
 
   addItem = (product) => {
+    const { carProductList } = this.state;
+    let indexProduct = 0;
+    carProductList.forEach((prod, ind) => {
+      if (prod.product.id === product.id) {
+        indexProduct = ind;
+      }
+    });
+    if (carProductList[indexProduct].quantity === product.available_quantity) {
+      return;
+    }
     this.addLocalStorage(product);
     this.setState((prevState) => ({
       carProductList: [...prevState.carProductList, product],
@@ -62,11 +72,6 @@ export default class Carrinho extends Component {
       return;
     }
     const car = JSON.parse(localStorage.getItem('carProductList'));
-    // const newCarr = [...carProductList];
-    // newCarr[indexProd].quantity -= 1;
-    // this.setState({
-    //   carProductList: newCarr,
-    // });
     const filter = car.map(({ id }) => id);
     const removedItem = filter.lastIndexOf(products.id);
     const newArrCarr = car.filter((_arr, index) => index !== removedItem);
