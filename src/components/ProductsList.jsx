@@ -14,6 +14,8 @@ export default class ProductsList extends Component {
               <p>{ `R$ ${product.price}`}</p>
 
             </Link>
+            { product.shipping.free_shipping
+              && <p data-testid="free-shipping">Frete grátis</p> }
             <button
               data-testid="product-add-to-cart"
               onClick={ () => { fAddProductToCar(product); } }
