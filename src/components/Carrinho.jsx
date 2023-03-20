@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './Carrinho.css';
 
 export default class Carrinho extends Component {
@@ -72,6 +73,11 @@ export default class Carrinho extends Component {
     this.updateLocalStorage(newArrCarr);
   };
 
+  handleSubmit = () => {
+    const { history } = this.props;
+    history.push('/Pagamento');
+  };
+
   render() {
     const { carProductList } = this.state;
     return (
@@ -86,41 +92,56 @@ export default class Carrinho extends Component {
               carProductList.length
                 ? (
                   carProductList.map(({ product, quantity }, index) => (
-                    <li key={ product.id }>
-                      <h4 data-testid="shopping-cart-product-name">{product.title}</h4>
-                      <p>{`R$ ${product.price}`}</p>
-                      <div className="quantity">
+                    <div key={ product.id }>
+                      <li>
+                        <h4 data-testid="shopping-cart-product-name">{product.title}</h4>
+                        <p>{`R$ ${product.price}`}</p>
+                        <div className="quantity">
+                          <button
+                            onClick={ () => this.decreaseItem(index, product) }
+                            data-testid="product-decrease-quantity"
+                          >
+                            -
+                          </button>
+                          <p data-testid="shopping-cart-product-quantity">{quantity}</p>
+                          <button
+                            onClick={ () => this.addItem(product) }
+                            data-testid="product-increase-quantity"
+                          >
+                            +
+                          </button>
+                        </div>
                         <button
-                          onClick={ () => this.decreaseItem(index, product) }
-                          data-testid="product-decrease-quantity"
+                          onClick={ () => this.removeItem(product.id) }
+                          data-testid="remove-product"
                         >
-                          -
-                        </button>
-                        <p data-testid="shopping-cart-product-quantity">{quantity}</p>
-                        <button
-                          onClick={ () => this.addItem(product) }
-                          data-testid="product-increase-quantity"
-                        >
-                          +
-                        </button>
-                      </div>
-                      <button
-                        onClick={ () => this.removeItem(product.id) }
-                        data-testid="remove-product"
-                      >
-                        Remover
+                          Remover
 
-                      </button>
-                    </li>
+                        </button>
+                      </li>
+
+                    </div>
                   ))
                 )
                 : <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
             }
           </ul>
+          <button
+            data-testid="checkout-products"
+            onClick={ this.handleSubmit }
+          >
+            Finalizar Compra
 
+          </button>
           <div className="valor-total" />
         </div>
       </section>
     );
   }
 }
+
+Carrinho.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
