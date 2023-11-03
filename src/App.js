@@ -9,7 +9,7 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/" component={ Home } />
+        <Route exact path="/online-store" component={ Home } />
         <Route exact path="/product/:id" component={ Product } />
         <Route exact path="/Carrinho" component={ Carrinho } />
         <Route exact path="/Pagamento" component={ Pagamento } />
