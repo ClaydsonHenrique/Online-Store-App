@@ -92,7 +92,7 @@ export default class Carrinho extends Component {
     return (
       <section>
         <div>
-          <Link to="/">Voltar</Link>
+          <Link to="/online-store">Voltar</Link>
         </div>
 
         <div className="lista-de-produtos">
