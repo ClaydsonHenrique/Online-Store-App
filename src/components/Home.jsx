@@ -15,6 +15,7 @@ class Home extends Component {
       productsDetails: [],
       search: false,
       carProductList: [],
+      quanty: [],
     };
   }
 
@@ -23,6 +24,7 @@ class Home extends Component {
     if (car) {
       this.setState({
         carProductList: car,
+        quanty: car.length,
       });
     }
   }
@@ -59,22 +61,23 @@ class Home extends Component {
   };
 
   render() {
-    const { productsDetails, search, category } = this.state;
+    const { productsDetails, search, category, quanty } = this.state;
     return (
       <>
         <div className="header">
-          <SearchProduct
-            handleClick={ this.handleClick }
-          />
+          <div>
+            <SearchProduct
+              handleClick={ this.handleClick }
+            />
+          </div>
           <Link
             to="/Carrinho"
-            data-testid="shopping-cart-button"
             className="carrinho"
           >
             {' '}
             Carrinho
-
           </Link>
+          <p className="quanty">{quanty}</p>
         </div>
 
         <div className="productCateg">

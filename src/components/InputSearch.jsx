@@ -21,11 +21,11 @@ export default class SearchProduct extends Component {
         <input
           onChange={ this.onInputChange }
           name="product"
-          data-testid="query-input"
+          className="query-input"
           value={ product }
         />
         <button
-          data-testid="query-button"
+          className="query-button"
           onClick={ () => handleClick(product) }
         >
           Procurar

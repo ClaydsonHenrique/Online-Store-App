@@ -1,33 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
 .header {
   background: #003be5;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
   height: 10vh;
   width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.header > input {
-  background: white;
-  border: 1px solid white;
-  height: 2rem;
-  left: 3rem;
+.carrinho {
+  color: white;
+  font-size: 25px;
+  position: relative;
+}
+
+.carrinho:hover {
+  transform: scale(1.1);
+}
+
+.quanty {
   position: absolute;
-  top: 2rem;
-  width: 25rem;
-}
-
-.header > button {
-  background: #2fc18c;
-  bottom: 91.67%;
-  height: 35px;
-  left: 30rem;
-  position: absolute;
-  top: 2rem;
-  width: 8rem;
-}
-
-.header > a {
+  background-color: rgb(36, 39, 42);
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 50%;
   color: aliceblue;
+  top: 2%;
+  right: 20%;
 }
 
 .productCateg {
@@ -57,12 +65,4 @@
   margin: 1cm;
   top: 101px;
   width: 310px;
-}
-
-.carrinho {
-  height: 40px;
-  left: 1185px;
-  position: absolute;
-  top: 31px;
-  width: 44.08px;
 }
