@@ -20,13 +20,17 @@ export default class Carrinho extends Component {
     }
     const carReduce = car.reduce((acc, prod) => {
       const soloProduct = car.filter((product) => (prod.id === product.id));
+      console.log('solo', soloProduct);
 
       acc = [...acc, { product: soloProduct[0], quantity: soloProduct.length }];
+      console.log('acc', acc);
       return acc;
     }, []);
     const parsedArray = carReduce.map((val) => JSON.stringify(val));
+    console.log('parese', parsedArray);
     const carProductList = parsedArray.filter((value, ind) => (
       parsedArray.indexOf(value) === ind)).map((val) => JSON.parse(val));
+    console.log('car', carProductList);
     this.setState(() => ({
       carProductList,
     }));
