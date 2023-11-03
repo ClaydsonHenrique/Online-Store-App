@@ -13,6 +13,7 @@ export default class Categories extends Component {
 
   fGetCategories = async () => {
     const data = await getCategories();
+    console.log(data, 'sfdsd');
     this.setState((prev) => ({
       allCategories: [...prev.allCategories, ...data],
     }));

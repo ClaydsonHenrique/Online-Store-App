@@ -26,16 +26,20 @@
 
 .quanty {
   position: absolute;
-  background-color: rgb(36, 39, 42);
-  height: 20px;
-  width: 20px;
-  text-align: center;
+  background-color: rgba(47, 193, 140, 1);
+  height: 24px;
+  width: 24px;
   font-size: 20px;
-  padding: 10px;
+  text-align: center;
+  padding: 3px;
   border-radius: 50%;
   color: aliceblue;
-  top: 2%;
-  right: 20%;
+  top: -12%;
+  left: 50%;
+}
+.carIcon{
+  height: 44px;
+  width: 40px;
 }
 
 .productCateg {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { BsFillCartFill } from 'react-icons/bs';
 import Categories from './Categories';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 import SearchProduct from './InputSearch';
@@ -74,10 +75,9 @@ class Home extends Component {
             to="/Carrinho"
             className="carrinho"
           >
-            {' '}
-            Carrinho
+            <BsFillCartFill className="carIcon" />
+            <p className="quanty">{quanty}</p>
           </Link>
-          <p className="quanty">{quanty}</p>
         </div>
 
         <div className="productCateg">
