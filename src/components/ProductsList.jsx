@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import './ProductList.css';
 
 export default class ProductsList extends Component {
   render() {
@@ -9,15 +10,15 @@ export default class ProductsList extends Component {
       <div className="productList">
         { productsDetails && productsDetails?.map((product) => (
           <div data-testid="product" className="product" key={ product.id }>
-            <Link data-testid="product-detail-link" to={ `/product/${product.id}` }>
-              <h4>{ product.title }</h4>
-              <p>{ `R$ ${product.price}`}</p>
-
+            <Link className="linkContainer" to={ `/product/${product.id}` }>
+              <img src={ product.thumbnail } alt="" className="imageProduct" />
+              <h4 className="productTitle">{ product.title }</h4>
             </Link>
+            <p className="price">{ `R$ ${product.price}`}</p>
             { product.shipping.free_shipping
-              && <p data-testid="free-shipping">Frete grátis</p> }
+              && <p className="free-shipping">Frete grátis!</p> }
             <button
-              data-testid="product-add-to-cart"
+              className="product-add-to-cart"
               onClick={ () => { fAddProductToCar(product); } }
             >
               Adicionar ao carrinho

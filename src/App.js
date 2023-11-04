@@ -15,6 +15,7 @@ class App extends Component {
         <Route exact path="/Pagamento" component={ Pagamento } />
 
       </Switch>
+
     );
   }
 }

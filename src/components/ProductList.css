@@ -1,0 +1,81 @@
+.productList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 35px;
+  align-items: center;
+  gap: 30px;
+}
+
+.productCateg {
+  background-color: rgba(225, 229, 235, 1);
+}
+
+.product {
+  width: 280px;
+  height: 360px;
+  position: relative;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.44);
+  transition: 0.3s;
+}
+
+.product:hover {
+  transform: scale(1.1);
+}
+
+.linkContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.imageProduct {
+  width: 160px;
+  height: 209px;
+}
+
+.productTitle {
+  font-family: Epilogue;
+  font-weight: 700;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 1);
+}
+
+.price {
+  font-family: Epilogue;
+  font-weight: 600;
+  font-size: 20px;
+  color: rgba(68, 73, 85, 1);
+}
+
+.product-add-to-cart {
+  width: 245px;
+  height: 39px;
+  background-color: rgba(49, 194, 141, 1);
+  font-family: Epilogue;
+  font-weight: 600;
+  font-size: 16px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.free-shipping {
+  position: absolute;
+  width: 60px;
+  height: 40px;
+  top: 5px;
+  right: 5px;
+  background-color: rgba(0, 59, 229, 1);
+  color: white;
+  font-family: Epilogue;
+  font-weight: 600;
+  font-size: 15px;
+  text-align: center;
+}

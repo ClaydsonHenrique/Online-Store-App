@@ -2,7 +2,49 @@
   display: flex;
 }
 
-.quantity > :nth-child( n ) {
+.quantity> :nth-child(n) {
   margin: 0.5rem;
 }
-/* fsdfd */
+
+.goHome {
+  width: 10rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.goHome a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #2FC18C;
+  font-family: Epilogue;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.lista-de-produtos{
+  display: flex;
+}
+
+.Instrucao{
+  color: #31C28D;
+    text-align: center;
+    font-family: Epilogue;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.10313rem;
+    text-transform: uppercase;
+}
+
+.ProdutoCarrinho{
+  display: flex;
+  width: 100%;
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+}

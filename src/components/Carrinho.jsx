@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import arrowIcon from '../images/arrowIcon.svg';
+import logo from '../images/logo.png';
 import './Carrinho.css';
 
 export default class Carrinho extends Component {
@@ -91,59 +93,87 @@ export default class Carrinho extends Component {
     const { carProductList } = this.state;
     return (
       <section>
-        <div>
-          <Link to="/online-store">Voltar</Link>
+        <div className="header">
+          <Link to="/online-store">
+            {' '}
+            <img src={ logo } alt="" />
+          </Link>
         </div>
-
-        <div className="lista-de-produtos">
-          <ul>
-            {
-              carProductList.length
-                ? (
-                  carProductList.map(({ product, quantity }, index) => (
-                    <div key={ product.id }>
-                      <li>
-                        <h4 data-testid="shopping-cart-product-name">{product.title}</h4>
-                        <p>{`R$ ${product.price}`}</p>
-                        <div className="quantity">
-                          <button
-                            onClick={ () => this.decreaseItem(index, product) }
-                            data-testid="product-decrease-quantity"
-                          >
-                            -
-                          </button>
-                          <p data-testid="shopping-cart-product-quantity">{quantity}</p>
-                          <button
-                            onClick={ () => this.addItem(product) }
-                            data-testid="product-increase-quantity"
-                          >
-                            +
-                          </button>
-                        </div>
-                        <button
-                          onClick={ () => this.removeItem(product.id) }
-                          data-testid="remove-product"
-                        >
-                          Remover
-
-                        </button>
-                      </li>
-
-                    </div>
-                  ))
-                )
-                : <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
-            }
-          </ul>
-          <button
-            data-testid="checkout-products"
-            onClick={ this.handleSubmit }
-          >
-            Finalizar Compra
-
-          </button>
-          <div className="valor-total" />
+        <div className="goHome">
+          <Link to="/online-store">
+            {' '}
+            <img src={ arrowIcon } alt="" />
+            {' '}
+            Voltar
+          </Link>
         </div>
+        <section className="ProdutoCarrinho">
+          {carProductList.length
+            ? (
+              <div className="lista-de-produtos">
+                <ul>
+                  {
+                    carProductList.length
+                      ? (
+                        carProductList.map(({ product, quantity }, index) => (
+                          <div key={ product.id }>
+                            <li>
+                              <h4
+                                data-testid="shopping-cart-product-name"
+                              >
+                                {product.title}
+
+                              </h4>
+                              <p>{`R$ ${product.price}`}</p>
+                              <div className="quantity">
+                                <button
+                                  onClick={ () => this.decreaseItem(index, product) }
+                                  data-testid="product-decrease-quantity"
+                                >
+                                  -
+                                </button>
+                                <p
+                                  data-testid="shopping-cart-product-quantity"
+                                >
+                                  {quantity}
+
+                                </p>
+                                <button
+                                  onClick={ () => this.addItem(product) }
+                                  data-testid="product-increase-quantity"
+                                >
+                                  +
+                                </button>
+                              </div>
+                              <button
+                                onClick={ () => this.removeItem(product.id) }
+                                data-testid="remove-product"
+                              >
+                                Remover
+
+                              </button>
+                            </li>
+
+                          </div>
+                        ))
+                      )
+                      : ''
+                  }
+                </ul>
+                <section>
+                  <div className="valor-total" />
+                  <button
+                    data-testid="checkout-products"
+                    onClick={ this.handleSubmit }
+                  >
+                    Finalizar Compra
+
+                  </button>
+                </section>
+              </div>
+            )
+            : <p className="Instrucao">Seu carrinho está vazio </p>}
+        </section>
       </section>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { FaSearch } from 'react-icons/fa';
 
 export default class SearchProduct extends Component {
   state = {
@@ -17,21 +18,23 @@ export default class SearchProduct extends Component {
     const { product } = this.state;
     const { handleClick } = this.props;
     return (
-      <>
+      <div className="containerInput">
         <input
           onChange={ this.onInputChange }
           name="product"
           className="query-input"
+          placeholder="Digite o que você busca"
           value={ product }
         />
         <button
           className="query-button"
           onClick={ () => handleClick(product) }
         >
-          Procurar
+          <FaSearch className="iconSearch" />
 
         </button>
-      </>
+      </div>
+
     );
   }
 }

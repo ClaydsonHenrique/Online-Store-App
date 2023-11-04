@@ -10,7 +10,7 @@
   height: 10vh;
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -37,36 +37,147 @@
   top: -12%;
   left: 50%;
 }
-.carIcon{
+
+.carIcon {
   height: 44px;
   width: 40px;
 }
+
+.query-input {
+  width: 240px;
+  height: 35px;
+  border: none;
+}
+
+.query-button {
+  background-color: white;
+  border: none;
+  width: 35px;
+  height: 35px;
+  padding: 0;
+}
+
+.iconSearch {
+  height: 20px;
+  width: 20px;
+  color: rgba(47, 193, 140, 1);
+}
+
+.containerInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.query-input::placeholder {
+  color: #999;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: normal;
+  text-align: center;
+}
+
+
+/* categoria */
 
 .productCateg {
   display: flex;
 }
 
 .prod-parag {
-  align-self: center;
+  margin-top: 50px;
 }
 
-.productList {
+.products {
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+
 }
 
-.product {
-  border: 1px solid black;
-}
-
-.category {
-  align-items: flex-end;
+.containerCategoria {
   background: white;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  height: 90vh;
-  margin: 1cm;
-  top: 101px;
-  width: 310px;
+  width: 30vh;
+  height: 100%;
+}
+
+.produtoCaterogia {
+  width: 30vh;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  font-family: Epilogue;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 18px;
+  padding: 10px 8px;
+  text-align: start;
+}
+
+.check {
+  color: white;
+  background-color: #999;
+}
+
+.containerLoading {
+  margin-top: 15%;
+}
+
+.Loading {
+  margin-top: 100px;
+  animation: is-rotating 1s infinite;
+  border: 20px solid #e5e5e5;
+  border-radius: 50%;
+  border-top-color: #00D5E2;
+  height: 250px;
+  width: 250px;
+}
+
+@keyframes is-rotating {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.ContainerProduct {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(240, 240, 237);
+  gap: 50px;
+}
+
+.flexProduct1 {
+  margin: 50px;
+  margin-bottom: 10px;
+  Width: 488px;
+  Height: 400px;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.56);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.flexProduct1 img {
+  Width: 278.3px;
+  Height: 364.83px;
+}
+
+.flexProduct2 {
+  background-color: #ffffff;
+  height: 65vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mainPage{
+  background-color: rgba(225, 229, 235, 1);
 }
