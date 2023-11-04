@@ -67,10 +67,6 @@ class Product extends Component {
     AllImages.map((img) => images.push(img.url));
   };
 
-  handleImagesSlide = (id) => {
-    this.setState({ imgIndex: id });
-  };
-
   render() {
     const cinco = 5;
     const {
@@ -86,6 +82,7 @@ class Product extends Component {
       imgIndex,
     } = this.state;
     console.log(atributos);
+    const num = 5;
     return (
       <main className="mainPage">
         <div className="header">
@@ -111,7 +108,7 @@ class Product extends Component {
           <section className="flexProduct2">
             <h1>Especiicações tecnicas</h1>
             <ul>
-              {atributos.slice(0, 15).map((atributo, index) => (
+              {atributos.slice(0, num).map((atributo, index) => (
                 <li key={ index }>
                   {`${atributo.name} : ${atributo.value_name}`}
                 </li>
