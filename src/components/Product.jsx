@@ -125,79 +125,81 @@ class Product extends Component {
           </section>
 
         </div>
-        <input
-          type="email"
-          name="emailInput"
-          value={ emailInput }
-          data-testid="product-detail-email"
-          onChange={ this.handleChange }
-        />
-        {[...Array(cinco)].map((star, index) => {
-          index += 1;
-          return (
-            <button
-              type="button"
-              key={ index }
-              data-testid={ `${index}-rating` }
-              className={ index <= rating ? 'on' : 'off' }
-              onClick={ () => {
-                this.setState({ rating: index });
-              } }
-            >
-              <span className="star">&#9733;</span>
+        <section className="containerAvaliation">
+          <input
+            type="email"
+            name="emailInput"
+            value={ emailInput }
+            data-testid="product-detail-email"
+            onChange={ this.handleChange }
+          />
+          {[...Array(cinco)].map((star, index) => {
+            index += 1;
+            return (
+              <button
+                type="button"
+                key={ index }
+                data-testid={ `${index}-rating` }
+                className={ index <= rating ? 'on' : 'off' }
+                onClick={ () => {
+                  this.setState({ rating: index });
+                } }
+              >
+                <span className="star">&#9733;</span>
 
-            </button>
-          );
-        })}
-        <p>{rating}</p>
-        <textarea
-          name="mensagem"
-          id=""
-          cols="30"
-          rows="10"
-          data-testid="product-detail-evaluation"
-          onChange={ this.handleChange }
-          value={ mensagem }
-        />
-        <button
-          data-testid="submit-review-btn"
-          onClick={ () => {
-            if (this.handleValidation()) {
-              const { match: { params } } = this.props;
-              const ratingObj = { email: emailInput, rating, text: mensagem };
-              const returnFromLocal = JSON.parse(localStorage.getItem(params.id)
-                || '[]');
-              console.log(returnFromLocal);
-              returnFromLocal.push(ratingObj);
-              localStorage.setItem(params.id, JSON.stringify(returnFromLocal));
-              this.setState((prev) => ({
-                ratings: [...prev.ratings, ratingObj],
-                emailInput: '',
-                rating: 0,
-                mensagem: '',
-                trigger: false,
-              }));
-            } else {
-              this.setState({ trigger: true });
-            }
-          } }
-        >
-          Enviar
-
-        </button>
-        {!this.handleValidation() && trigger && (
-          <p
-            data-testid="error-msg"
+              </button>
+            );
+          })}
+          {/* <p>{rating}</p> */}
+          <textarea
+            name="mensagem"
+            id=""
+            cols="30"
+            rows="10"
+            data-testid="product-detail-evaluation"
+            onChange={ this.handleChange }
+            value={ mensagem }
+          />
+          <button
+            data-testid="submit-review-btn"
+            onClick={ () => {
+              if (this.handleValidation()) {
+                const { match: { params } } = this.props;
+                const ratingObj = { email: emailInput, rating, text: mensagem };
+                const returnFromLocal = JSON.parse(localStorage.getItem(params.id)
+                  || '[]');
+                console.log(returnFromLocal);
+                returnFromLocal.push(ratingObj);
+                localStorage.setItem(params.id, JSON.stringify(returnFromLocal));
+                this.setState((prev) => ({
+                  ratings: [...prev.ratings, ratingObj],
+                  emailInput: '',
+                  rating: 0,
+                  mensagem: '',
+                  trigger: false,
+                }));
+              } else {
+                this.setState({ trigger: true });
+              }
+            } }
           >
-            Campos inválidos
+            Enviar
 
-          </p>)}
-        {ratings.map((evaluation) => (
-          <div key={ evaluation.email }>
-            <p data-testid="review-card-email">{evaluation.email}</p>
-            <div data-testid="review-card-rating">{evaluation.rating}</div>
-            <span data-testid="review-card-evaluation">{evaluation.text}</span>
-          </div>))}
+          </button>
+          {!this.handleValidation() && trigger && (
+            <p
+              data-testid="error-msg"
+            >
+              Campos inválidos
+
+            </p>)}
+          {ratings.map((evaluation) => (
+            <div key={ evaluation.email }>
+              <p data-testid="review-card-email">{evaluation.email}</p>
+              <div data-testid="review-card-rating">{evaluation.rating}</div>
+              <span data-testid="review-card-evaluation">{evaluation.text}</span>
+            </div>))}
+        </section>
       </main>
     );
   }

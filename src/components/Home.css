@@ -1,5 +1,4 @@
 * {
-  margin: 0;
   padding: 0;
   text-decoration: none;
 }
@@ -47,6 +46,10 @@
   width: 240px;
   height: 35px;
   border: none;
+}
+
+.query-input:focus {
+  outline: none;
 }
 
 .query-button {
@@ -179,5 +182,7 @@
 }
 
 .mainPage{
-  background-color: rgba(225, 229, 235, 1);
+  background-color: rgb(241, 238, 238);
+  height: 100vh
 }
+
